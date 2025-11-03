@@ -2,10 +2,6 @@
 
 ## A legacy fabric 1.4.7 mod that provide multiple utilities around skins
 
-### Author
-
-- Xalnox
-
 ### Current feature
 
 ##### The following feature requires an internet connection
@@ -17,3 +13,7 @@
 
 - Add support for the new layers on skin
 - Add support for the slim skin
+
+### Author
+
+- Xalnox
