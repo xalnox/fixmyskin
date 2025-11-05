@@ -22,8 +22,7 @@ public class ClientPlayerEntityMixin {
                         .get(0);
             } catch (IOException e) {
                 instance.skinUrl = value;
-
-        }
+            }
     }
 
     @Redirect(method = "method_2510",at = @At(value="FIELD", target = "Lnet/minecraft/entity/player/ClientPlayerEntity;field_4008:Ljava/lang/String;", opcode = Opcodes.PUTFIELD))

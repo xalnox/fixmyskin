@@ -1,5 +1,6 @@
 package fr.xalnox.skinfixer.mixin;
 
+import net.minecraft.client.TextureManager;
 import net.minecraft.client.render.entity.model.BiPedModel;
 import net.minecraft.client.render.model.ModelPart;
 import net.minecraft.entity.Entity;
@@ -18,7 +19,6 @@ public class BipedModelMixin {
     private ModelPart leftPants;
     private ModelPart rightPants;
     private ModelPart jacket;
-
     @Shadow public ModelPart body;
     @Shadow public ModelPart field_1476; // right arm
     @Shadow public ModelPart field_1477; // left arm
