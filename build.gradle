@@ -6,8 +6,8 @@ plugins {
 loom {
     accessWidenerPath = file("src/main/resources/skinFixer.accesswidener")
 }
-group = 'fr.xalnox'
-version = '1.0-SNAPSHOT'
+version = project.mod_version
+group = project.maven_group
 
 repositories {
     mavenCentral()

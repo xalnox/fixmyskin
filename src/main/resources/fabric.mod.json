@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "skinfixer",
-  "version": "${version}",
+  "version": "1.0.0",
   "name": "Skin Fixer",
   "description": "This mod fix the skins in minecraft 1.4.7 and apply the new skin display.",
   "authors": [
@@ -9,7 +9,7 @@
   ],
   "contact": {
     "discord": "xalnox",
-    "sources": ""
+    "sources": "https://github.com/xalnox/skinFixer"
   },
   "license": "gnu affero general public license v3.0",
   "icon": "assets/skinfixer/icon.png",
