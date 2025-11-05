@@ -4,14 +4,13 @@ import org.spongepowered.include.com.google.gson.Gson;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
-import java.net.ProtocolException;
 import java.net.URL;
 import java.util.*;
 
 public class SkinAPIUtils {
 
     private static final Gson gson = new Gson();
-    private static Map<String,String> cachedUUID = new HashMap<>(); // Username -> UUID
+    private static final Map<String,String> cachedUUID = new HashMap<>(); // Username -> UUID
 
     public static List<String> getSkinCapeURL(String UUID) throws IOException {
         String content = getJsonResource("https://sessionserver.mojang.com/session/minecraft/profile/" + UUID + "?unsigned=false");
@@ -54,6 +53,7 @@ public class SkinAPIUtils {
             try (StringReader reader = new StringReader(content)) {
                 PlayerProfile profile = gson.fromJson(reader, PlayerProfile.class);
                 if (profile.id != null) {
+                    cachedUUID.put(username, profile.id);
                     return profile.id;
                 }
             }
