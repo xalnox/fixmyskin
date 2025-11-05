@@ -6,8 +6,12 @@
   "mixins": [
   ],
   "client": [
+    "BipedModelMixin",
+    "ClientPlayerEntityMixin",
+    "DownloadSkinParserMixin",
     "OtherClientPlayerEntityMixin",
-    "ClientPlayerEntityMixin"
+    "SkullEntityModelMixin",
+    "TextureManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -3,7 +3,9 @@ plugins {
     id "legacy-looming" version "${loom_version}" // Version must be the same as fabric-loom's
     id "maven-publish"
 }
-
+loom {
+    accessWidenerPath = file("src/main/resources/skinFixer.accesswidener")
+}
 group = 'fr.xalnox'
 version = '1.0-SNAPSHOT'
 

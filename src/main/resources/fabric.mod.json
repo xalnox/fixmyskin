@@ -24,5 +24,6 @@
   ],
   "depends": {
     "minecraft": "1.4.7"
-  }
+  },
+  "accessWidener": "skinFixer.accesswidener"
 }
