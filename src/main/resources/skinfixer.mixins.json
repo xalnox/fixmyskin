@@ -9,7 +9,9 @@
     "BipedModelMixin",
     "ClientPlayerEntityMixin",
     "DownloadSkinParserMixin",
-    "OtherClientPlayerEntityMixin"
+    "OtherClientPlayerEntityMixin",
+    "SkullEntityModelMixin",
+    "TextureManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
