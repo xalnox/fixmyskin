@@ -1,4 +1,4 @@
-package fr.xalnox.skinfixer.mixin;
+package fr.xalnox.fixmyskin.mixin;
 
 import net.minecraft.client.TextureManager;
 import net.minecraft.client.texture.TexturePackManager;

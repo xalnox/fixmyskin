@@ -1,4 +1,4 @@
-package fr.xalnox.skinfixer.utils;
+package fr.xalnox.fixmyskin.utils;
 
 import org.spongepowered.include.com.google.gson.Gson;
 

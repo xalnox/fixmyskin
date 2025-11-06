@@ -4,7 +4,7 @@ plugins {
     id "maven-publish"
 }
 loom {
-    accessWidenerPath = file("src/main/resources/skinFixer.accesswidener")
+    accessWidenerPath = file("src/main/resources/fixmyskin.accesswidener")
 }
 version = project.mod_version
 group = project.maven_group

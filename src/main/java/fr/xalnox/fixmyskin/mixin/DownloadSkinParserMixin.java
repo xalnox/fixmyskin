@@ -1,4 +1,4 @@
-package fr.xalnox.skinfixer.mixin;
+package fr.xalnox.fixmyskin.mixin;
 
 import net.minecraft.client.render.DownloadedSkinParser;
 import org.objectweb.asm.Opcodes;
