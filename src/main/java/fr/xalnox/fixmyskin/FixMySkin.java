@@ -1,9 +1,9 @@
-package fr.xalnox.skinfixer;
+package fr.xalnox.fixmyskin;
 
 import net.fabricmc.api.ModInitializer;
 
 
-public class SkinFixer implements ModInitializer {
+public class FixMySkin implements ModInitializer {
 
     @Override
     public void onInitialize() {

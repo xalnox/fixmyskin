@@ -1,6 +1,6 @@
-package fr.xalnox.skinfixer.mixin;
+package fr.xalnox.fixmyskin.mixin;
 
-import fr.xalnox.skinfixer.utils.SkinAPIUtils;
+import fr.xalnox.fixmyskin.utils.SkinAPIUtils;
 import net.minecraft.entity.player.OtherClientPlayerEntity;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;

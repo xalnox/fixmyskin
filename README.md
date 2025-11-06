@@ -1,4 +1,4 @@
-# Skin Fixer
+# FixMySkin
 
 ## A legacy fabric 1.4.7 mod that provide multiple utilities around skins
 
@@ -16,7 +16,3 @@
 ### Planned feature
 
 - Skin customisation GUI
-
-### Author
-
-- Xalnox

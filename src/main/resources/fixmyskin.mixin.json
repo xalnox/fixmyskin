@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "fr.xalnox.skinfixer.mixin",
+  "package": "fr.xalnox.fixmyskin.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
   ],
@@ -10,6 +10,7 @@
     "ClientPlayerEntityMixin",
     "DownloadSkinParserMixin",
     "OtherClientPlayerEntityMixin",
+    "SkullBlockEntityRendererMixin",
     "SkullEntityModelMixin",
     "TextureManagerMixin"
   ],

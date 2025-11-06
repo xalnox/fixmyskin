@@ -9,21 +9,21 @@
   ],
   "contact": {
     "discord": "xalnox",
-    "sources": "https://github.com/xalnox/skinFixer"
+    "sources": "https://github.com/xalnox/fixmyskin"
   },
   "license": "gnu affero general public license v3.0",
-  "icon": "assets/skinfixer/icon.png",
+  "icon": "assets/fixmyskin/icon.png",
   "environment": "client",
   "entrypoints": {
     "main": [
-      "fr.xalnox.skinfixer.SkinFixer"
+      "fr.xalnox.fixmyskin.FixMySkin"
     ]
   },
   "mixins": [
-    "skinfixer.mixins.json"
+    "fixmyskin.mixin.json"
   ],
   "depends": {
     "minecraft": "1.4.7"
   },
-  "accessWidener": "skinFixer.accesswidener"
+  "accessWidener": "fixmyskin.accesswidener"
 }
