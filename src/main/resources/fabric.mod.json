@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "id": "skinfixer",
+  "id": "fixmyskin",
   "version": "1.0.0",
-  "name": "Skin Fixer",
+  "name": "Fix my skin",
   "description": "This mod fix the skins in minecraft 1.4.7 and apply the new skin display.",
   "authors": [
     "Xalnox"
