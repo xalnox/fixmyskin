@@ -9,9 +9,11 @@
     "BipedModelMixin",
     "ClientPlayerEntityMixin",
     "DownloadSkinParserMixin",
+    "MobEntityRendererMixin",
     "OtherClientPlayerEntityMixin",
+    "PlayerEntityMixin",
+    "PlayerEntityRendererMixin",
     "SkullBlockEntityRendererMixin",
-    "SkullEntityModelMixin",
     "TextureManagerMixin"
   ],
   "injectors": {

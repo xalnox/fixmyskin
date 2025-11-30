@@ -14,7 +14,10 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.IntBuffer;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 @Mixin(TextureManager.class)
 abstract class TextureManagerMixin {
@@ -31,10 +34,10 @@ abstract class TextureManagerMixin {
 
     @Shadow
     public abstract void method_1418(BufferedImage bufferedImage, int i);
-
     @Inject(method = "getTextureFromPath", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/texture/ITexturePack;openStream(Ljava/lang/String;)Ljava/io/InputStream;"), cancellable = true)
     public void onOpenImageStream(String par1, CallbackInfoReturnable<Integer> cir) {
-        if (par1.equals("/mob/char.png")) {
+
+        if (par1.equals("/mob/char.png") || par1.matches("^/armor/[a-z]+_\\d+(?:_b)?\\.png$")) {
             // Resize the default skin.
             try {
                 // Open the old skin

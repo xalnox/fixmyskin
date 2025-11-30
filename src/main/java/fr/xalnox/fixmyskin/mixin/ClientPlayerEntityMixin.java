@@ -1,5 +1,6 @@
 package fr.xalnox.fixmyskin.mixin;
 
+import fr.xalnox.fixmyskin.interfaces.SlimPlayerHolder;
 import fr.xalnox.fixmyskin.utils.SkinAPIUtils;
 import net.minecraft.entity.player.ClientPlayerEntity;
 import org.objectweb.asm.Opcodes;
@@ -16,10 +17,15 @@ public class ClientPlayerEntityMixin {
     public void setSkin(ClientPlayerEntity instance, String value) {
             try {
                 String[] newValue = value.split("/|\\.png");
-                instance.skinUrl = SkinAPIUtils.getSkinCapeURL(
+                List<String> data = SkinAPIUtils.getSkinCapeURL(
                         SkinAPIUtils.getUUIDFromUsername(
-                                newValue[newValue.length-1]))
-                        .get(0);
+                                newValue[newValue.length - 1]));
+
+
+                instance.skinUrl = data.get(0);
+                if (this instanceof SlimPlayerHolder && data.size() == 3) {
+                    ((SlimPlayerHolder) instance).skinFixer$setSlim("slim".equals(data.get(2)));
+                }
             } catch (IOException e) {
                 instance.skinUrl = value;
             }

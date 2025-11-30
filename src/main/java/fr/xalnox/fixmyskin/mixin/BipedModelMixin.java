@@ -1,5 +1,7 @@
 package fr.xalnox.fixmyskin.mixin;
 
+import fr.xalnox.fixmyskin.interfaces.LayerSkin;
+import fr.xalnox.fixmyskin.interfaces.SlimPlayerHolder;
 import net.minecraft.client.render.entity.model.BiPedModel;
 import net.minecraft.client.render.model.ModelPart;
 import net.minecraft.entity.Entity;
@@ -12,17 +14,23 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(BiPedModel.class)
-public class BipedModelMixin {
-    private ModelPart leftSleeve;
-    private ModelPart rightSleeve;
-    private ModelPart leftPants;
-    private ModelPart rightPants;
-    private ModelPart jacket;
+public class BipedModelMixin implements SlimPlayerHolder, LayerSkin {
+    @Unique private ModelPart leftSleeve;
+    @Unique private ModelPart rightSleeve;
+    @Unique private ModelPart leftPants;
+    @Unique private ModelPart rightPants;
+    @Unique private ModelPart jacket;
     @Shadow public ModelPart body;
     @Shadow public ModelPart field_1476; // right arm
     @Shadow public ModelPart field_1477; // left arm
     @Shadow public ModelPart field_1478; // right leg
     @Shadow public ModelPart field_1479; // left leg
+    @Unique private boolean isSlim = false;
+    @Unique private float f;
+    @Unique private float g;
+
+
+
 
     @Redirect(method = "<init>(FFII)V", at = @At(value = "FIELD", target = "Lnet/minecraft/client/render/entity/model/BiPedModel;textureHeight:I"))
     public void setTextureHeight(BiPedModel instance, int value) {
@@ -37,17 +45,9 @@ public class BipedModelMixin {
     @Inject(method = "<init>(FFII)V", at = @At("TAIL"))
     public void initModel(float f, float g, int i, int j, CallbackInfo ci) {
         if (this.getClass().equals(BiPedModel.class)) {
+            this.f = f;
+            this.g = g;
             // f = padding/reduction used for addCuboid
-            // left sleeve (mirrored)
-            this.leftSleeve = new ModelPart((BiPedModel) (Object) this, 48, 48);
-            this.leftSleeve.mirror = true;
-            this.leftSleeve.setPivot(5.0F, 2.0F + g, 0.0F);
-            this.leftSleeve.addCuboid(-1.0F, -2.0F, -2.0F, 4, 12, 4, f + 0.25F);
-            // right sleeve
-            this.rightSleeve = new ModelPart((BiPedModel) (Object) this, 40, 32);
-            this.rightSleeve.setPivot(-5.0F, 2.0F + g, 0.0F);
-            this.rightSleeve.addCuboid(-3.0F, -2.0F, -2.0F, 4, 12, 4, f + 0.25F);
-
             // left pants (mirrored)
             this.leftPants = new ModelPart((BiPedModel) (Object) this, 0, 48);
             this.leftPants.mirror = true;
@@ -64,6 +64,16 @@ public class BipedModelMixin {
             this.jacket.setPivot(0.0F, 0.0F + g, 0.0F);
             this.jacket.addCuboid(-4.0F, 0.0F, -2.0F, 8, 12, 4, f + 0.25F);
 
+            // left sleeve (mirrored)
+            this.leftSleeve = new ModelPart((BiPedModel) (Object) this, 48, 48);
+            this.leftSleeve.mirror = true;
+            this.leftSleeve.setPivot(5.0F, 2.0F + g, 0.0F);
+            this.leftSleeve.addCuboid(-1.0F, -2.0F, -2.0F, 4, 12, 4, f + 0.25F);
+            // right sleeve
+            this.rightSleeve = new ModelPart((BiPedModel) (Object) this, 40, 32);
+            this.rightSleeve.setPivot(-5.0F, 2.0F + g, 0.0F);
+            this.rightSleeve.addCuboid(-3.0F, -2.0F, -2.0F, 4, 12, 4, f + 0.25F);
+
             this.leftSleeve.setTextureSize(64, 64);
             this.rightSleeve.setTextureSize(64, 64);
             this.leftPants.setTextureSize(64, 64);
@@ -74,7 +84,39 @@ public class BipedModelMixin {
             this.field_1477.setTextureSize(64, 64);
             this.field_1478.setTextureSize(64, 64);
             this.field_1479.setTextureSize(64, 64);
+
+
         }
+    }
+
+    public void skinFixer$setSlim() {
+        this.isSlim = true;
+        // left arm
+        this.field_1477 = new ModelPart((BiPedModel) (Object) this, 32, 48);
+        this.field_1477.mirror = true;
+        this.field_1477.addCuboid(-1.0F, -2.0F, -2.0F, 3, 12, 4, f);
+        this.field_1477.setPivot(5.0F, 2.5F + g, 0.0F);
+
+        // right arm
+        this.field_1476 = new ModelPart((BiPedModel) (Object) this, 40, 16);
+        this.field_1476.addCuboid(-2.0F, -2.0F, -2.0F, 3, 12, 4, f);
+        this.field_1476.setPivot(-5.0F, 2.5F + g, 0.0F);
+
+        // left sleeve
+        this.leftSleeve = new ModelPart((BiPedModel) (Object) this, 48, 48);
+        this.leftSleeve.addCuboid(-1.0F, -2.0F, -2.0F, 3, 12, 4, f + 0.25F);
+        this.leftSleeve.setPivot(5.0F, 2.5F + g, 0.0F);
+
+        // right sleeve
+        this.rightSleeve = new ModelPart((BiPedModel) (Object) this, 40, 32);
+        this.rightSleeve.addCuboid(-2.0F, -2.0F, -2.0F, 3, 12, 4, f + 0.25F);
+        this.rightSleeve.setPivot(-5.0F, 2.5F + g, 0.0F);
+
+
+        this.leftSleeve.setTextureSize(64, 64);
+        this.rightSleeve.setTextureSize(64, 64);
+        this.field_1476.setTextureSize(64, 64);
+        this.field_1477.setTextureSize(64, 64);
     }
 
     @Inject(method = "setAngles", at = @At("TAIL"))
@@ -145,4 +187,17 @@ public class BipedModelMixin {
             this.jacket.render(scale);
         }
     }
+
+    @Override
+    public boolean skinFixer$isSlim() {
+        return this.isSlim;
+    }
+
+    @Override
+    public void skinFixer$setSlim(boolean slim) {
+        this.isSlim = slim;
+    }
+
+
+
 }

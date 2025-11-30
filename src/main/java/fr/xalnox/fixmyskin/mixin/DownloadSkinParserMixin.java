@@ -8,15 +8,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(DownloadedSkinParser.class)
 public abstract class DownloadSkinParserMixin {
-
-
     @Redirect(method = "parseSkin", at = @At(value = "FIELD", target = "Lnet/minecraft/client/render/DownloadedSkinParser;height:I", opcode = Opcodes.PUTFIELD))
     public void setParseSkin(DownloadedSkinParser parser, int value) {
         parser.height = 64;
-    }
-
-    @Redirect(method = "parseSkin",at = @At(value = "INVOKE",target = "Lnet/minecraft/client/render/DownloadedSkinParser;setTransparent(IIII)V"))
-    private void skipTransparent(DownloadedSkinParser instance, int u1, int v1, int u2, int v2) {
-        //NUH UH
     }
 }

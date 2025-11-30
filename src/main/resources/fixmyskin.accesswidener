@@ -1,2 +1,6 @@
 accessWidener v2 named
 accessible field net/minecraft/client/render/DownloadedSkinParser height I
+accessible field net/minecraft/client/render/entity/MobEntityRenderer field_2130 Lnet/minecraft/client/render/entity/model/EntityModel;
+accessible field net/minecraft/client/render/entity/PlayerEntityRenderer field_2134 Lnet/minecraft/client/render/entity/model/BiPedModel;
+accessible field net/minecraft/client/render/entity/PlayerEntityRenderer field_2135 Lnet/minecraft/client/render/entity/model/BiPedModel;
+accessible field net/minecraft/client/render/entity/PlayerEntityRenderer field_2133 Lnet/minecraft/client/render/entity/model/BiPedModel;

@@ -11,7 +11,6 @@ public class SkinAPIUtils {
 
     private static final Gson gson = new Gson();
     private static final Map<String,String> cachedUUID = new HashMap<>(); // Username -> UUID
-
     public static List<String> getSkinCapeURL(String UUID) throws IOException {
         String content = getJsonResource("https://sessionserver.mojang.com/session/minecraft/profile/" + UUID + "?unsigned=false");
 
@@ -31,12 +30,16 @@ public class SkinAPIUtils {
 
                     List<String> finalTextures = new ArrayList<>();
                     // Access SKIN and CAPE URLs
-                    if (textures.textures.SKIN != null) {
-                        finalTextures.add(textures.textures.SKIN.url);
-                    }
                     if (textures.textures.CAPE != null) {
                         finalTextures.add(textures.textures.CAPE.url);
                     }
+                    if (textures.textures.SKIN != null) {
+                        finalTextures.add(0,textures.textures.SKIN.url);
+                        if (textures.textures.SKIN.metadata != null && textures.textures.SKIN.metadata.model != null) {
+                            finalTextures.add(textures.textures.SKIN.metadata.model);
+                        }
+                    }
+
                     if (!finalTextures.isEmpty()) {
                         return finalTextures;
                     }
@@ -86,13 +89,10 @@ public class SkinAPIUtils {
     }
 
     static class Profile {
-        String id;
-        String name;
         List<Property> properties;
     }
 
     static class Property {
-        String name;
         String value;
     }
     // Inner decoded texture classes
@@ -107,8 +107,12 @@ public class SkinAPIUtils {
 
     static class Texture {
         String url;
+        Metadata metadata;
     }
 
+    static class Metadata {
+        String model;
+    }
     static class PlayerProfile {
         String id;
         String name;
