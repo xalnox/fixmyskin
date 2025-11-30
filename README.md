@@ -9,6 +9,7 @@
 - Fix the skin not loading (singleplayer/multiplayer)
 - Fix the cape not loading (singleplayer/multiplayer)
 - New 1.8+ skin system
+- Slim skin support (partial)
 
 ![img.png](img.png)
 *(Not the best example gonna change that soon)*
